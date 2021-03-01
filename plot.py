@@ -95,7 +95,7 @@ def plotgeneralpopularity(played, dates, picname, start=datetime.date(year=2020,
     ax.plot(datestoplot, playedtoplot)
     plt.title('Games played per day in 2020')
     #plt.yscale('log')
-    plt.grid()
+    #plt.grid()
     plt.legend()
     plt.savefig(picname, dpi=200)
     if show:
