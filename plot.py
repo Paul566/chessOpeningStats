@@ -68,7 +68,7 @@ def getgeneralstats(data, dates):
         whitescore.append(data[date]["games"][1])
     return played, whitescore
 
-def plotgeneralpopularity(played, dates, picname, start=START, end=END, show=False):
+def plotgeneralpopularity(played, dates, picname, start=datetime.date(year=2020, month=1, day=1), end=datetime.date(year=2021, month=1, day=1), show=False):
     datestoplot = []
     playedtoplot = []
     for i in range(len(dates)):
@@ -79,14 +79,29 @@ def plotgeneralpopularity(played, dates, picname, start=START, end=END, show=Fal
     plt.figure()
     fig, ax = plt.subplots()
     fig.autofmt_xdate()
+    """plt.axvline(x=datetime.date(year=2015, month=8, day=1), label='Marathon Tournaments', color='green', linestyle='--', linewidth=1, alpha=0.5)
+    plt.axvline(x=datetime.date(year=2015, month=10, day=24), color='green', linestyle='--', linewidth=1, alpha=0.5)
+    plt.axvline(x=datetime.date(year=2016, month=10, day=22), color='green', linestyle='--', linewidth=1, alpha=0.5)
+    plt.axvline(x=datetime.date(year=2017, month=1, day=8), color='green', linestyle='--', linewidth=1, alpha=0.5)
+    plt.axvline(x=datetime.date(year=2017, month=4, day=16), color='green', linestyle='--', linewidth=1, alpha=0.5)
+    plt.axvline(x=datetime.date(year=2017, month=8, day=13), color='green', linestyle='--', linewidth=1, alpha=0.5)"""
+    plt.axvline(x=datetime.date(year=2020, month=4, day=18), color='purple', linestyle='--', linewidth=1, alpha=0.5)
+    plt.axvline(x=datetime.date(year=2020, month=8, day=1), label='Marathon Tournaments', color='purple', linestyle='--', linewidth=1, alpha=0.5)
+
+    plt.axvline(x=datetime.date(year=2020, month=3, day=11), label='Covid-19 becomes a pandemic', color='red', linestyle='--', linewidth=1, alpha=0.5)
+    plt.axvline(x=datetime.date(year=2020, month=10, day=23), label='\"The Queen\'s Gambit\" is released', color='b', linestyle='--', linewidth=1, alpha=0.5)
+    plt.axvline(x=datetime.date(year=2020, month=12, day=25), label='Christmas', color='g',
+                linestyle='--', linewidth=1, alpha=0.5)
     ax.plot(datestoplot, playedtoplot)
-    plt.title('Games played per day')
-    plt.yscale('log')
+    plt.title('Games played per day in 2020')
+    #plt.yscale('log')
+    plt.grid()
+    plt.legend()
     plt.savefig(picname, dpi=200)
     if show:
         plt.show()
 
-def plotopening(opplayed, opwscore, dates, played, opening_name, picname, start=START, end=END, useweeks=False, usemonths=False, show=False):
+def plotopening(opplayed, opwscore, dates, played, opening_name, picname, start=START, end=END, useweeks=False, usemonths=False, show=True):
     deadliness = []
     opfrac = []
     datesrelevant = []
@@ -263,10 +278,10 @@ if __name__ == "__main__":
     #print(l)
     #print(len(l))
 
-    #played, whitescore = getgeneralstats(data, dates)
-    #plotgeneralpopularity(played, dates, "TotalGames.png")
+    played, whitescore = getgeneralstats(data, dates)
+    plotgeneralpopularity(played, dates, "TotalGames2020.png", show=True)
 
-    plotenglundtrap(data, datetime.date(year=2020, month=1, day=1), END, useweeks=False)
+    #plotenglundtrap(data, datetime.date(year=2020, month=1, day=1), END, useweeks=False)
     #plotstaffordtraps(data, datetime.date(year=2020, month=1, day=1), END)
 
     #kindplayed, kindscore = getopeningstats(data, dates, "King's Indian")
