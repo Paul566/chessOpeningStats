@@ -40,4 +40,4 @@ I couldn't explain the spike in the Schilling-Kostic Gambit in January 2019.
 ![](graphs/JeromeFreq.png)
 ![](graphs/SicilianJalalabad2020Freq.png)
 ![](graphs/ViennaFreq.png)
-
+You can find more graphs in the "graphs" repository, though the most interesting ones (in my opinion) were presented in this readme.
