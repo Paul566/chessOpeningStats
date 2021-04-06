@@ -215,7 +215,7 @@ def plotopening(opplayed, opwscore, dates, played, opening_name, picname,
     plt.close('all')
 
 
-def plotstaffordtraps(data, start=START, end=END, useweeks=True, show=False):
+def plotstaffordtraps(data, start=START, end=END, useweeks=False, show=False):
     dates = getdates(data)
     datesrelevant = []
     for date in dates:
@@ -267,7 +267,7 @@ def plotstaffordtraps(data, start=START, end=END, useweeks=True, show=False):
     plt.close()
 
 
-def plotenglundtrap(data, start=START, end=END, useweeks=True, show=False):
+def plotenglundtrap(data, start=START, end=END, useweeks=False, show=False):
     dates = getdates(data)
     datesrelevant = []
     for date in dates:
@@ -315,10 +315,13 @@ if __name__ == "__main__":
     dates = getdates(data)
 
     played, whitescore = getgeneralstats(data, dates)
+    plotenglundtrap(data, datetime.date(year=2020, month=1, day=1), END)
+    plotstaffordtraps(data, datetime.date(year=2020, month=1, day=1), END)
+
     plotgeneralpopularity(played, dates, "TotalGames.png", logscale=True, grid=True)
     plotgeneralpopularity(played, dates, "TotalGames2020.png", start=datetime.date(year=2020, month=1, day=1),
                           logscale=False, grid=False)
-    """
+    
     orthoschnappplayed, orthoschnappscore = getopeningstats(data, dates, "Orthoschnapp Gambit")
     plotopening(orthoschnappplayed, orthoschnappscore, dates, played, "Orthoschnapp Gambit", "Orthoschnapp",
                 lines=[[datetime.date(year=2020, month=7, day=12),
@@ -357,9 +360,6 @@ if __name__ == "__main__":
                 useblackwrate=True, start=datetime.date(year=2020, month=1, day=1),
                 lines=[[datetime.date(year=2020, month=8, day=27),
                         'youtube video \"Don\'t Accept This Gambit!\" \nby Eric Rosen (0.71M views as of 2021-03-07)']])
-
-    plotenglundtrap(data, datetime.date(year=2020, month=1, day=1), END)
-    plotstaffordtraps(data, datetime.date(year=2020, month=1, day=1), END)
 
     kgambitplayed, kgambitscore = getopeningstats(data, dates, "King's Gambit")
     plotopening(kgambitplayed, kgambitscore, dates, played, "King's Gambit", "KingsGambit", ratecorona=True,
@@ -538,5 +538,5 @@ if __name__ == "__main__":
                         'youtube video \"The Most Aggressive Gambit You\'ve Never Heard Of | Nakhmanson Gambit\" \nby Jonathan Schrantz (0.17M views as of 2021-03-07)'],
                        [datetime.date(year=2020, month=6, day=14),
                         'youtube video \"Insanely Aggressive Nakhmanson Gambit\" \nby thechesswebsite (0.20M views as of 2021-03-07)']])
-    """
+
 

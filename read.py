@@ -110,8 +110,6 @@ if __name__ == "__main__":
         data = json.load(f)
     #for i in range(9):
     #    data = read("lichess_db_standard_rated_2013-0"+str(i+1)+".pgn", data)
-    #data = read("lichess_db_standard_rated_2013-10.pgn", data)
-    #data = read("lichess_db_standard_rated_2013-11.pgn", data)
-    data = read("lichess_db_standard_rated_2021-02.pgn", data)
+    #data = read("lichess_db_standard_rated_2021-03.pgn", data)
     with open('data', 'w') as f:
         json.dump(data, f)
