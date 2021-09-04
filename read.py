@@ -108,6 +108,6 @@ def read(filename, data):
 if __name__ == "__main__":
     with open('data') as f:
         data = json.load(f)
-    # data = read("lichess_db_standard_rated_2021-04.pgn", data)
+    #data = read("lichess_db_standard_rated_2021-06.pgn", data)
     with open('data', 'w') as f:
         json.dump(data, f)
